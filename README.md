@@ -29,15 +29,15 @@ Techstack:
 - Orchestration: Docker Compose
 
 Project Structure:
-.
+
 ├── backend/
-│   ├── Dockerfile
-│   └── source code
+   ├── Dockerfile
+   └── source code
 ├── frontend/
-│   ├── Dockerfile
-│   └── source code
+   ├── Dockerfile
+   └── source code
 ├── nginx/
-│   └── nginx.conf
+  └── nginx.conf
 ├── compose.yml
 └── README.md
 
