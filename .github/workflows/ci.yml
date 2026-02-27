@@ -1,0 +1,31 @@
+name: CI-CD-Pipeline
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Login to ECR
+        run: |
+          aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 052368238934.dkr.ecr.eu-north-1.amazonaws.com
+      - name: Build Image
+        run: |
+          docker build -t docker-demo .
+          docker tag docker-demo:latest 052368238934.dkr.ecr.eu-north-1.amazonaws.com/docker-demo:latest
+        
+      - name: Push Image
+        run: |
+          docker push 052368238934.dkr.ecr.eu-north-1.amazonaws.com/docker-demo:latest
+
+      - name: Deploy to EKS
+        run: |
+          kubectl apply -f k8s/
+          
+         
+
