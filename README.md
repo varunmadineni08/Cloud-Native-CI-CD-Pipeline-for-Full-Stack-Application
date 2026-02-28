@@ -1,4 +1,4 @@
-# Dockerized Fullstack Web Application
+#Production-Ready CI/CD Pipeline Using GitHub Actions, Amazon ECR & EKS
 
 A production-style fullstack web application containerized using Docker and orchestrated with Docker Compose.
 
