@@ -19,13 +19,13 @@ jobs:
         run: |
           COMMIT_SHA=$(git rev-parse --short HEAD)
           docker build -t backend:$COMMIT_SHA ./backend
-          docker tag backend:$COMMIT_SHA <ECR_URI>/backend:$COMMIT_SHA
+          docker tag backend:$COMMIT_SHA 052368238934.dkr.ecr.eu-north-1.amazonaws.com/docker-demo/backend:$COMMIT_SHA
 
       - name: Build Frontend
         run: |
           COMMIT_SHA=$(git rev-parse --short HEAD)
           docker build -t frontend:$COMMIT_SHA ./frontend
-          docker tag frontend:$COMMIT_SHA <ECR_URI>/frontend:$COMMIT_SHA
+          docker tag frontend:$COMMIT_SHA 052368238934.dkr.ecr.eu-north-1.amazonaws.com/docker-demo/frontend:$COMMIT_SHA
         
       - name: Push Image
         run: |
