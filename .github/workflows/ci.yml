@@ -14,13 +14,14 @@ jobs:
       - name: Login to ECR
         run: |
           aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 052368238934.dkr.ecr.eu-north-1.amazonaws.com
-      - name: Build Backend Image
+
+      - name: Build Backend
         run: |
           COMMIT_SHA=$(git rev-parse --short HEAD)
           docker build -t backend:$COMMIT_SHA ./backend
           docker tag backend:$COMMIT_SHA <ECR_URI>/backend:$COMMIT_SHA
 
-      - name: Build Frontend Image
+      - name: Build Frontend
         run: |
           COMMIT_SHA=$(git rev-parse --short HEAD)
           docker build -t frontend:$COMMIT_SHA ./frontend
